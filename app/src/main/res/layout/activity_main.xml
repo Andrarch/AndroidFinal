@@ -19,7 +19,7 @@
         android:id="@+id/MainAndrewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/MainAndrewButton"
         tools:layout_editor_absoluteX="120dp"
         tools:layout_editor_absoluteY="124dp" />
 
