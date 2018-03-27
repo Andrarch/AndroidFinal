@@ -6,7 +6,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,20 +24,20 @@ public class AndrewTranspo extends Activity {
     Button javaInfoButton;
     ArrayList<String> javaMessages=new ArrayList<String>();
     EditText javaText;
-    ChatDatabaseHelper databaseHelp;
+    SearchDatabaseHelper databaseHelp;
 
     SQLiteDatabase database;
     Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        databaseHelp=new ChatDatabaseHelper(this);
+        databaseHelp=new SearchDatabaseHelper(this);
         database= databaseHelp.getWritableDatabase();
-        cursor=database.rawQuery("SELECT Message FROM "+ChatDatabaseHelper.getTableName(),new String[]{});
+        cursor=database.rawQuery("SELECT "+SearchDatabaseHelper.KEY_SEARCH+" FROM "+ SearchDatabaseHelper.getTableName(),new String[]{});
         cursor.moveToFirst();
-        int column=cursor.getColumnIndex(ChatDatabaseHelper.KEY_SEARCH);
+        int column=cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH);
         while(!cursor.isAfterLast() ){
-            Log.i("Andrew_OCTranspo", "SQL Message:" + cursor.getString( cursor.getColumnIndex( ChatDatabaseHelper.KEY_SEARCH) ) );
+            Log.i("Andrew_OCTranspo", "SQL Message:" + cursor.getString( cursor.getColumnIndex( SearchDatabaseHelper.KEY_SEARCH) ) );
             javaMessages.add(cursor.getString(column));
             cursor.moveToNext();
         }
@@ -58,8 +57,8 @@ public class AndrewTranspo extends Activity {
             javaMessages.add(tempString);
             messageAdapter.notifyDataSetChanged();
             javaText.setText("");
-            cValues.put(ChatDatabaseHelper.KEY_SEARCH,tempString);
-            database.insert(ChatDatabaseHelper.getTableName(),ChatDatabaseHelper.KEY_SEARCH,cValues);
+            cValues.put(SearchDatabaseHelper.KEY_SEARCH,tempString);
+            database.insert(SearchDatabaseHelper.getTableName(), SearchDatabaseHelper.KEY_SEARCH,cValues);
         });
 
 
@@ -96,39 +95,5 @@ public class AndrewTranspo extends Activity {
         }
 
     }
-    public static class ChatDatabaseHelper extends SQLiteOpenHelper {
-        static String DATABASE_NAME="OCSearches.db";
-        static int VERSION_NUMBER=0;
-        static String KEY_SEARCH="Search";
-        static String KEY_ID="id";
-        static private String TABLE_NAME="PrevSearch";
-        String ACTIVITY_NAME="ChatWindow";
-        private static final String DATABASE_CREATE = "create table "
-                + TABLE_NAME + "( " + KEY_ID
-                + " integer primary key autoincrement, " + KEY_SEARCH
-                + " VARCHAR2(20) );";
 
-
-        public ChatDatabaseHelper(Context ctx) {
-
-            super(ctx,DATABASE_NAME, null, VERSION_NUMBER);
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db){
-            db.execSQL(DATABASE_CREATE);
-            Log.i("ChatDatabaseHelper", "Calling onCreate");
-
-
-        }
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-            Log.i("ChatDatabaseHelper", "Calling onUpgrade, oldVersion= " + oldVersion + " newVersion= " + newVersion);
-            onCreate(db);
-
-        }
-        public static String getTableName(){
-            return TABLE_NAME;
-        }
-    }
 }

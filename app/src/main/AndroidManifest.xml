@@ -16,12 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AndrewTranspo" >
-
-        </activity>
-        <activity android:name=".BilalClinic" ></activity>
+        <activity android:name=".AndrewTranspo"></activity>
+        <activity android:name=".BilalClinic" />
         <activity android:name=".RobinQuiz" />
-        <activity android:name=".ShadiMovies"></activity>
+        <activity android:name=".ShadiMovies" />
+        <activity android:name=".AndrewTranspoDetail"></activity>
     </application>
 
 </manifest>
