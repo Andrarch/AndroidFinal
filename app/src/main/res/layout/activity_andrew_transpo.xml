@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/OCRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.andrew.androidfinal.AndrewTranspo">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textOCTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/AndrewTitleText" />
+    <Button
+        android:id="@+id/buttonOCStopSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+
+        android:text="@string/AndrewInfoButton" />
+
+
+    <EditText
+        android:id="@+id/editTextOCStopSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@id/buttonOCStopSearch"
+        android:layout_alignParentStart="true"
+        android:ems="10"
+        android:inputType="number"
+        android:text=""
+        android:hint="@string/AndrewStopHelp"
+        />
+
+
+    <ListView
+        android:id="@+id/listViewOCPrevSearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textOCTitle"
+
+        android:layout_marginBottom="51dp"
+
+        />
+
+
+</RelativeLayout>

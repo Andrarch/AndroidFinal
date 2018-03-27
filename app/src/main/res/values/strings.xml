@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">AndroidFinal</string>
     <string name="MainAndrewButton">Andrew\'s OC Transpo Activity</string>
+    <string name="AndrewTitleText">Stop Number</string>
+    <string name="AndrewStopHelp">Enter Stop Number</string>
+    <string name="AndrewInfoButton">Get Info</string>
+
 </resources>

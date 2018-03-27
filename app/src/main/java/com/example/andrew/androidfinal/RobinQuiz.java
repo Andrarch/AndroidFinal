@@ -1,9 +1,10 @@
 package com.example.andrew.androidfinal;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class RobinQuiz extends AppCompatActivity {
+public class RobinQuiz extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
