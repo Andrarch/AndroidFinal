@@ -8,4 +8,6 @@
     <string name="AndrewDetailStopNumber"></string>
     <string name="AndrewStopSearchSnack">Search Data</string>
     <string name="AndrewStopSearchSnackGo">Go</string>
+    <string name="Continue">Continue</string>
+    <string name="Delete">Delete</string>
 </resources>
