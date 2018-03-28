@@ -3,6 +3,7 @@ package com.example.andrew.androidfinal;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -16,8 +17,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import java.util.ArrayList;
+import android.support.design.widget.Snackbar;
+
 
 public class AndrewTranspo extends Activity {
     ListView javaListView;
@@ -59,8 +62,13 @@ public class AndrewTranspo extends Activity {
             javaText.setText("");
             cValues.put(SearchDatabaseHelper.KEY_SEARCH,tempString);
             database.insert(SearchDatabaseHelper.getTableName(), SearchDatabaseHelper.KEY_SEARCH,cValues);
+            Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoDetail.class);
+            String PassString=javaText.getText().toString();
+            intent.putExtra("StopNumber",PassString);
+            startActivity(intent);
         });
-
+        Toast toast = Toast.makeText(this, "Andrew's OCTranspo Toast", Toast.LENGTH_LONG);
+        toast.show();
 
     }
     @Override
@@ -87,6 +95,20 @@ public class AndrewTranspo extends Activity {
             result = inflater.inflate(R.layout.octranspo_stopid, null);
             TextView message = (TextView)result.findViewById(R.id.textView);
             message.setText(   getItem(position)  ); // get the string at position
+            message.setOnClickListener(temp->{
+                javaText.setText(message.getText());
+
+                Snackbar mySnackbar = Snackbar.make(findViewById(R.id.textView),
+                     R.string.AndrewStopSearchSnack, Snackbar.LENGTH_SHORT);
+                mySnackbar.setAction(R.string.AndrewStopSearchSnackGo, (t)->{
+                    Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoDetail.class);
+                    intent.putExtra("StopNumber",message.getText());
+                    startActivity(intent);
+                });
+                mySnackbar.show();
+
+            });
+
             return result;
 
         }

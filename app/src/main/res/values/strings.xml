@@ -4,5 +4,8 @@
     <string name="AndrewTitleText">Stop Number</string>
     <string name="AndrewStopHelp">Enter Stop Number</string>
     <string name="AndrewInfoButton">Get Info</string>
-
+    <string name="AndrewDetailTitle">Detailed View</string>
+    <string name="AndrewDetailStopNumber"></string>
+    <string name="AndrewStopSearchSnack">Search Data</string>
+    <string name="AndrewStopSearchSnackGo">Go</string>
 </resources>
