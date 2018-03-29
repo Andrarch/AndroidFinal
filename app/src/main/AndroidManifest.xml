@@ -17,7 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".AndrewTranspo" />
-        <activity android:name=".BilalClinic" />
+        <activity android:name=".BilalClinic" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".RobinQuiz" />
         <activity android:name=".ShadiMovies"></activity>
     </application>
