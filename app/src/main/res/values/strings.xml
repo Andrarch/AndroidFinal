@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidFinal</string>
+    <string name="myButton">Add</string>
+    <string name="TypeHere">Type Here</string>
 </resources>
