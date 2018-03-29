@@ -18,7 +18,24 @@ public class MainActivity extends Activity {
 
             startActivity(intent);
         });
+        Button btnShadiMain=findViewById(R.id.MainShadiButton);
+        btnAndrewMain.setOnClickListener((click)->{
+            Intent intent = new Intent(MainActivity.this, ShadiMovies.class);
 
+            startActivity(intent);
+        });
+        Button btnBilalMain=findViewById(R.id.MainBilalButton);
+        btnAndrewMain.setOnClickListener((click)->{
+            Intent intent = new Intent(MainActivity.this, BilalClinic.class);
+
+            startActivity(intent);
+        });
+        Button btnRobinMain=findViewById(R.id.MainRobinButton);
+        btnAndrewMain.setOnClickListener((click)->{
+            Intent intent = new Intent(MainActivity.this, RobinQuiz.class);
+
+            startActivity(intent);
+        });
 
     }
 }
