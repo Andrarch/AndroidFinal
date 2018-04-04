@@ -10,6 +10,7 @@ import android.widget.Toast;
 public class BilalClinic extends Activity {
 
     Button b;
+    Button resetB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,14 @@ public class BilalClinic extends Activity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(BilalClinic.this, "Transferring to form", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        resetB=findViewById(R.id.resetButton);
+        resetB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(BilalClinic.this, "Transferring to form", Toast.LENGTH_SHORT).show();
             }
         });
     }
