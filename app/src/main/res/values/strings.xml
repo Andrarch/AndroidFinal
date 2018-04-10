@@ -10,4 +10,9 @@
     <string name="AndrewStopSearchSnackGo">Go</string>
     <string name="Continue">Continue</string>
     <string name="Delete">Delete</string>
+    <string name="myButton">Add</string>
+    <string name="TypeHere">Type Here</string>
+    <string name="MainRobinButton">Robin\'s Quiz</string>
+    <string name="MainShadiButton">Shadi\'s Movies</string>
+    <string name="MainBilalButton">Bilal\'s Clinic</string>
 </resources>

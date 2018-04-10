@@ -14,5 +14,29 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         />
+    <Button
+        android:id="@+id/MainShadiButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MainShadiButton"
+        android:layout_below="@id/MainAndrewButton"
+        android:layout_alignParentStart="true"
+        />
+    <Button
+        android:id="@+id/MainBilalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MainBilalButton"
+        android:layout_below="@id/MainShadiButton"
+        android:layout_alignParentStart="true"
+        />
+    <Button
+        android:id="@+id/MainRobinButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MainRobinButton"
+        android:layout_below="@id/MainBilalButton"
+        android:layout_alignParentStart="true"
+        />
 
 </RelativeLayout>
