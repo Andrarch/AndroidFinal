@@ -97,6 +97,11 @@ public class AndrewTranspoStopFragment extends Fragment {
             direction.setText(temp.getRouteDirection());
             heading.setText(temp.getRouteHeading());
             route.setText(temp.getRouteNumber());
+
+            if(!temp.isButton()){
+                go.setVisibility(View.INVISIBLE);
+            }
+
             go.setOnClickListener((t)->{
                 Intent intent = new Intent( getActivity(), AndrewTranspoDetail.class);
                 intent.putExtra("StopNumber", stopNumber);
@@ -176,7 +181,7 @@ public class AndrewTranspoStopFragment extends Fragment {
                         temp.setRouteDirection(tempText);
                     }
                     Log.i("ParserInfo","ParserName "+name);
-                    
+
 
 
 
@@ -209,6 +214,7 @@ public class AndrewTranspoStopFragment extends Fragment {
     }
     public class StopData {
         String routeNumber, routeDirection, routeHeading;
+        boolean button=true;
 
         public String getRouteDirection() {
             return routeDirection;
@@ -235,6 +241,14 @@ public class AndrewTranspoStopFragment extends Fragment {
         }
         public boolean hasValues(){
             return((routeDirection!=null)&&(routeHeading!=null)&&(routeNumber!=null));
+        }
+
+        public void setButton(boolean button) {
+            this.button = button;
+        }
+
+        public boolean isButton() {
+            return button;
         }
     }
 
