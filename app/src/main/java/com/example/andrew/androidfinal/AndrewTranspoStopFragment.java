@@ -64,6 +64,7 @@ public class AndrewTranspoStopFragment extends Fragment {
         start.setRouteDirection(" DIRECTION ");
         start.setRouteNumber("ROUTE # ");
         start.setRouteHeading(" HEADING ");
+        start.setButton(false);
         javaStopInfo.add(start);
         return result;
     }

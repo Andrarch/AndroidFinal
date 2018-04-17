@@ -25,20 +25,22 @@ public class AndrewTranspoDetail extends Activity {
     ArrayList<DetailData> javaDetailData=new ArrayList<>();
     String StopNumber="3050";
     String BusNumber="95";
-    DetailAdapter detailAdapter=new DetailAdapter(this);
+    DetailAdapter detailAdapter;
     ListView detailList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_andrew_transpo_detail);
+        detailAdapter=new DetailAdapter(this);
         detailList=findViewById(R.id.octrasnpoDetailList);
         detailList.setAdapter(detailAdapter);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             StopNumber = extras.getString("StopNumber");
-            BusNumber=extras.getString("BusBumber");
+            BusNumber=extras.getString("BusNumber");
         }
-
+        StopInfoQuery stopInfoQuery=new StopInfoQuery();
+        stopInfoQuery.execute();
     }
 
 public class DetailAdapter extends ArrayAdapter<DetailData> {
@@ -99,7 +101,7 @@ public class StopInfoQuery extends AsyncTask<String, Integer, String> {
         Log.i("Execute Start","Execute start");
         HttpURLConnection conn;
         try {
-            String urlString="https://api.octranspo1.com/v1.2/GetRouteSummaryForStop?appID=223eb5c3&&apiKey=ab27db5b435b8c8819ffb8095328e775&stopNo="+stopNumber;
+            String urlString="https://api.octranspo1.com/v1.2/GetNextTripsForStop?appID=223eb5c3&&apiKey=ab27db5b435b8c8819ffb8095328e775&stopNo=" +StopNumber+"&routeNo="+BusNumber;
             Log.i("URL",urlString);
             URL url = new URL(urlString);
             conn = (HttpsURLConnection) url.openConnection();
@@ -118,44 +120,81 @@ public class StopInfoQuery extends AsyncTask<String, Integer, String> {
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(conn.getInputStream(), null);
             parser.nextTag();
-            AndrewTranspoStopFragment.StopData temp=new AndrewTranspoStopFragment.StopData();
+            DetailData temp=new DetailData();
             Log.i("Parsing","Parsing");
             while (parser.next() != XmlPullParser.END_DOCUMENT) {
                 if (parser.getEventType() != XmlPullParser.START_TAG) {
+                    if(parser.getEventType()==XmlPullParser.END_TAG){
+                        if (parser.getName().equalsIgnoreCase("trip")) {
+                                result.add(temp);
+
+
+
+                            temp=new DetailData();
+                        }
+                    }
+
                     continue;
                 }
                 String name = parser.getName();
                 // Starts by looking for the entry tag
-                if (name.equalsIgnoreCase("route")) {
-                    if(temp.hasValues()){
-                        Log.i("Added Value","Value Added to StopInfo");
-                        result.add(temp);
 
-                    }
-
-                    temp=new AndrewTranspoStopFragment.StopData();
-                }
-                if (name.equalsIgnoreCase("RouteHeading")) {
+                if (name.equalsIgnoreCase("TripDestination")) {
                     parser.next();
                     String tempText=parser.getText();
-                    Log.i("RouteHeading","Route "+tempText);
-                    temp.setRouteHeading(tempText);
+                    Log.i("TripDestination","Route "+tempText);
+                    temp.setTripDestination(tempText);
                 }
-                if (name.equalsIgnoreCase("routeNo")) {
+                if (name.equalsIgnoreCase("TripStartTime")) {
                     parser.next();
                     String tempText=parser.getText();
-                    Log.i("routeNo","routeNo "+tempText);
-                    temp.setRouteNumber(tempText);
+                    Log.i("TripStartTime","TripStartTime "+tempText);
+                    temp.setTripStartTime(tempText);
                 }
 
-                if (name.equalsIgnoreCase("Direction")) {
+                if (name.equalsIgnoreCase("AdjustedScheduleTime")) {
                     parser.next();
                     String tempText=parser.getText();
-                    Log.i("Direction","Direction "+tempText);
-                    temp.setRouteDirection(tempText);
+                    Log.i("AdjustedScheduleTime","AdjustedScheduleTime "+tempText);
+                    temp.setAdjustedScheduleTime(tempText);
                 }
-                Log.i("ParserInfo","ParserName "+name);
+                if (name.equalsIgnoreCase("AdjustmentAge")) {
+                    parser.next();
+                    String tempText=parser.getText();
+                    Log.i("AdjustmentAge","AdjustmentAge "+tempText);
+                    temp.setAdjustmentAge(tempText);
+                }
+                if (name.equalsIgnoreCase("LastTripOfSchedule")) {
+                    parser.next();
+                    String tempText=parser.getText();
+                    Log.i("LastTripOfSchedule","LastTripOfSchedule "+tempText);
+                    temp.setLastTrip(tempText);
+                }
 
+                if (name.equalsIgnoreCase("BusType")) {
+                    parser.next();
+                    String tempText=parser.getText();
+                    Log.i("BusType","BusType "+tempText);
+                    temp.setBusType(tempText);
+                }
+                if (name.equalsIgnoreCase("GPSSpeed")) {
+                    parser.next();
+                    String tempText=parser.getText();
+                    Log.i("GPSSpeed","GPSSpeed "+tempText);
+                    temp.setGPSSpeed(tempText);
+                }
+                if (name.equalsIgnoreCase("Latitude")) {
+                    parser.next();
+                    String tempText=parser.getText();
+                    Log.i("Latitude","Latitude "+tempText);
+                    temp.setLatitude(tempText);
+                }
+                if (name.equalsIgnoreCase("Longitude")) {
+                    parser.next();
+                    String tempText=parser.getText();
+                    Log.i("Longitude","Longitude "+tempText);
+                    temp.setLongitude(tempText);
+                }
 
 
 
@@ -196,6 +235,10 @@ public class DetailData {
     String Latitude;
     String Longitude;
     String LastTrip ;
+
+    public boolean hasData(){
+        return ((LastTrip!=null)&&(Longitude!=null)&&(TripDestination!=null)&&(TripStartTime!=null)&&(AdjustedScheduleTime!=null)&&(AdjustmentAge!=null)&&(BusType!=null)&&(GPSSpeed!=null)&&(Latitude!=null));
+    }
 
     public String getLastTrip() {
         return LastTrip;
