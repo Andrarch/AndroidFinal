@@ -10,20 +10,28 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import android.support.design.widget.Snackbar;
 
+import org.xmlpull.v1.XmlPullParser;
 
 
 public class AndrewTranspo extends Activity {
@@ -66,7 +74,7 @@ public class AndrewTranspo extends Activity {
             javaText.setText("");
             cValues.put(SearchDatabaseHelper.KEY_SEARCH, tempString);
             database.insert(SearchDatabaseHelper.getTableName(), SearchDatabaseHelper.KEY_SEARCH, cValues);
-            Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoDetail.class);
+            Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoStop.class);
             String PassString = javaText.getText().toString();
             intent.putExtra("StopNumber", PassString);
             startActivity(intent);
@@ -110,7 +118,7 @@ public class AndrewTranspo extends Activity {
                 Snackbar mySnackbar = Snackbar.make(findViewById(R.id.textView),
                         R.string.AndrewStopSearchSnack, Snackbar.LENGTH_SHORT);
                 mySnackbar.setAction(R.string.AndrewStopSearchSnackGo, (t) -> {
-                    Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoDetail.class);
+                    Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoStop.class);
                     intent.putExtra("StopNumber", message.getText());
                     startActivity(intent);
 
@@ -120,7 +128,7 @@ public class AndrewTranspo extends Activity {
                 builder.setMessage("Stop Number: "+message.getText())
                         .setPositiveButton(R.string.Continue, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoDetail.class);
+                                Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoStop.class);
                                 intent.putExtra("StopNumber", message.getText());
                                 startActivity(intent);
                             }
@@ -147,4 +155,5 @@ public class AndrewTranspo extends Activity {
         }
 
     }
+
 }

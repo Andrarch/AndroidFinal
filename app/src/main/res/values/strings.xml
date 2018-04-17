@@ -15,4 +15,6 @@
     <string name="MainRobinButton">Robin\'s Quiz</string>
     <string name="MainShadiButton">Shadi\'s Movies</string>
     <string name="MainBilalButton">Bilal\'s Clinic</string>
+    <string name="title_activity_andrew_transpo_stop">AndrewTranspoStop</string>
+    <string name="action_settings">Settings</string>
 </resources>
