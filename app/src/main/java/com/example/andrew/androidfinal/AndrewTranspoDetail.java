@@ -70,17 +70,21 @@ public class DetailAdapter extends ArrayAdapter<DetailData> {
         TextView time=result.findViewById(R.id.andrewOCDetailStartTime);
         TextView adjustAge=result.findViewById(R.id.andrewOCDetailAdjustedAge);
         TextView lastTrip=result.findViewById(R.id.andrewOCDetailLastTrip);
+        TextView longitude=result.findViewById(R.id.andrewOCLongitude);
+        TextView latitude=result.findViewById(R.id.andrewOCLatitude);
+
 
         DetailData temp = javaDetailData.get(position);
 
         busType.setText(temp.getBusType());
-        busSpeed.setText(temp.getGPSSpeed());
-        destination.setText(temp.getTripDestination());
-        adjustedTime.setText(temp.getAdjustedScheduleTime());
-        adjustAge.setText(temp.getAdjustmentAge());
-        time.setText(temp.getTripStartTime());
-        lastTrip.setText((temp.getLastTrip()));
-
+        busSpeed.setText( " Bus SPeed: "+((temp.getGPSSpeed()==null)?"Unknown":temp.getGPSSpeed())  );
+        destination.setText(" Dest: "+temp.getTripDestination());
+        adjustedTime.setText(" Arrives in "+temp.getAdjustedScheduleTime()+" mins");
+        adjustAge.setText(" updated "+temp.getAdjustmentAge()+" mins ago" );
+        time.setText(" Scheduled for: "+temp.getTripStartTime());
+        lastTrip.setText(((temp.getLastTrip().equalsIgnoreCase("true"))?"!Last bus on Route!":""));
+        latitude.setText(" Latitude: "+((temp.getLatitude()==null)?"Unknown":temp.getLatitude()) );
+        longitude.setText(" Longitude: "+((temp.getLongitude()==null)?"Unknown":temp.getLongitude()) );
 
 
 
