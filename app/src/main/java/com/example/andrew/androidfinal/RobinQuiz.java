@@ -28,8 +28,9 @@ public class RobinQuiz extends AppCompatActivity {
     Button multiple, trueFalse, numeric, infoButton;
     SQLiteDatabase databaseDb;
     Cursor cursor;
-}
+
     Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +39,11 @@ public class RobinQuiz extends AppCompatActivity {
         multiple = findViewById(R.id.sendButton);
         trueFalse = findViewById(R.id.sendButton);
         numeric = findViewById(R.id.sendButton);
-       // TextView message = (TextView) result.findViewById(R.id.textView);
+        // TextView message = (TextView) result.findViewById(R.id.textView);
 
-    Snackbar snackbar = Snackbar.make(findViewById(R.id.textView), "Quiz data", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.textView), "Quiz data", Snackbar.LENGTH_LONG);
 
-    snackbar.show();
+        snackbar.show();
 //        snackbar.setAction(R.string.AndrewStopSearchSnackGo, (t) -> {
 //            Intent intent = new Intent(RobinQuiz.this, RobinQuiz.class);
 //            intent.putExtra("StopNumber", message.getText());
@@ -81,4 +82,5 @@ public class RobinQuiz extends AppCompatActivity {
 //    }
 
 
+    }
 }
