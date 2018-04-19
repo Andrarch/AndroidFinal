@@ -1,39 +1,14 @@
 package com.example.andrew.androidfinal;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -70,9 +45,9 @@ public class RobinQuiz extends Activity {
         multipleR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Intent intent = new Intent(RobinQuiz.this, MultipleChoice.class);
+                final Intent intent = new Intent(RobinQuiz.this, RobinMultipleChoice.class);
                 startActivity(intent);
-                
+
             }
         });
         numericR.setOnClickListener(new View.OnClickListener() {

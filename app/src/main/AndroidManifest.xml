@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ShadiMovies" />
-        <activity android:name=".MultipleChoice" />
+        <activity android:name=".RobinMultipleChoice" />
         <activity android:name=".RobinListView" />
         <activity android:name=".trueFalseRobin" />
         <activity android:name=".RobinNumeric"></activity>

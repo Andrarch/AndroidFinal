@@ -5,42 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RobinNumeric">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="Score"
-            android:textSize="20sp"
-            android:padding="16dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:layout_alignParentRight="true"
-            android:id="@+id/points"
-            android:padding="16dp"/>
-    </RelativeLayout>
+    tools:context=".RobinMultipleChoice">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/numberquiz"
+        android:src="@drawable/multiplechoice"
         android:id="@+id/trueFalseImage"/>
 
-    <TextView
-        android:id="@+id/questionTrueFalseR"
-        android:padding="8dp"
+    <EditText
+        android:id="@+id/multipleQuestionR"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Insert Questions Below"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        />
+        android:text="Insert Question Here "
+        android:ems="10"
+        android:inputType="text" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,12 +29,75 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/inputNumericQR"
+            android:id="@+id/multipleC1R"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Insert Choice 1 Here "
             android:ems="10"
             android:inputType="text" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/multipleC2R"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insert Choice 2 Here "
+            android:ems="10"
+            android:inputType="text" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/multipleC3R"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insert Choice 3 Here "
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/multipleC4R"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insert Choice 4 Here "
+            android:ems="10"
+            android:inputType="text" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Actual Answer" />
 
 
     </LinearLayout>
@@ -67,27 +111,13 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insert Answers Below"
+            android:text="Insert Actual Answer Here"
             android:ems="10"
             android:inputType="text" />
 
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/numberDecimalR"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal" />
-
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/numericSubmitR"
