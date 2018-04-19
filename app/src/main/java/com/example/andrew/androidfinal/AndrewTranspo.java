@@ -1,11 +1,9 @@
 package com.example.andrew.androidfinal;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,11 +42,11 @@ public class AndrewTranspo extends AppCompatActivity {
         setContentView(R.layout.activity_andrew_transpo);
         databaseHelp = new SearchDatabaseHelper(this);
         database = databaseHelp.getWritableDatabase();
-        cursor = database.rawQuery("SELECT " + SearchDatabaseHelper.KEY_SEARCH + " FROM " + SearchDatabaseHelper.getTableName(), new String[]{});
+        cursor = database.rawQuery("SELECT " + SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO + " FROM " + SearchDatabaseHelper.getTableNameOctranspo(), new String[]{});
         cursor.moveToFirst();
-        int column = cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH);
+        int column = cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO);
         while (!cursor.isAfterLast()) {
-            Log.i("Andrew_OCTranspo", "SQL Message:" + cursor.getString(cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH)));
+            Log.i("Andrew_OCTranspo", "SQL Message:" + cursor.getString(cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO)));
             javaMessages.add(cursor.getString(column));
             cursor.moveToNext();
         }
@@ -77,8 +74,8 @@ public class AndrewTranspo extends AppCompatActivity {
             javaMessages.add(tempString);
             transpoAdapter.notifyDataSetChanged();
 
-            cValues.put(SearchDatabaseHelper.KEY_SEARCH, tempString);
-            database.insert(SearchDatabaseHelper.getTableName(), SearchDatabaseHelper.KEY_SEARCH, cValues);
+            cValues.put(SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO, tempString);
+            database.insert(SearchDatabaseHelper.getTableNameOctranspo(), SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO, cValues);
             Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoStop.class);
             String PassString = javaText.getText().toString();
             intent.putExtra("StopNumber", PassString);
@@ -149,7 +146,7 @@ public class AndrewTranspo extends AppCompatActivity {
 
     }
     public void deleteEntry(String delete){
-        database.delete(SearchDatabaseHelper.getTableName(), SearchDatabaseHelper.KEY_SEARCH+"=?", new String[] {delete} );
+        database.delete(SearchDatabaseHelper.getTableNameOctranspo(), SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO +"=?", new String[] {delete} );
         javaMessages.remove(delete);
         transpoAdapter.notifyDataSetChanged();
 
