@@ -23,16 +23,16 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/multipleR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/button2"
+        android:layout_alignTop="@+id/trueFalseR"
         android:layout_marginStart="29dp"
         android:text="Multiple Choice" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/trueFalseR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -42,20 +42,20 @@
         android:text="True/False" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/numericR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/button"
+        android:layout_alignStart="@+id/multipleR"
         android:layout_marginBottom="54dp"
         android:text="Numeric" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/backR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button2"
-        android:layout_alignTop="@+id/button3"
+        android:layout_alignStart="@+id/trueFalseR"
+        android:layout_alignTop="@+id/numericR"
         android:text="Back to Main" />
 
 </RelativeLayout>

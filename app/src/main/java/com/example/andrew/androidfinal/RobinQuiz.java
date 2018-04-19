@@ -14,11 +14,32 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
 
-public class RobinQuiz extends AppCompatActivity {
+public class RobinQuiz extends Activity {
     ListView listViewObject;
 
     ArrayList<String> quizLines = new ArrayList<String>();
@@ -35,15 +56,15 @@ public class RobinQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_robin_quiz);
-        infoButton = findViewById(R.id.sendButton);
-        multiple = findViewById(R.id.sendButton);
-        trueFalse = findViewById(R.id.sendButton);
-        numeric = findViewById(R.id.sendButton);
+        infoButton = findViewById(R.id.backR);
+        multiple = findViewById(R.id.multipleR);
+        trueFalse = findViewById(R.id.trueFalseR);
+        numeric = findViewById(R.id.numericR);
         // TextView message = (TextView) result.findViewById(R.id.textView);
 
-        Snackbar snackbar = Snackbar.make(findViewById(R.id.textView), "Quiz data", Snackbar.LENGTH_LONG);
+//        Snackbar snackbar = Snackbar.make(findViewById(R.id.textView), "Quiz data", Snackbar.LENGTH_LONG);
 
-        snackbar.show();
+  //      snackbar.show();
 //        snackbar.setAction(R.string.AndrewStopSearchSnackGo, (t) -> {
 //            Intent intent = new Intent(RobinQuiz.this, RobinQuiz.class);
 //            intent.putExtra("StopNumber", message.getText());
