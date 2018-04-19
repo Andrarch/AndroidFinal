@@ -36,10 +36,8 @@ public class AndrewTranspoStop extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(fab.getContext());
-                builder.setMessage("By: Andrew Archibald \nActivity version 0.8 \nPress image > on the left for detailed information");
-
-
-
+                builder.setMessage("By: Andrew Archibald \n\nActivity version 0.8 \n\nPress image arrow on the left for detailed information");
+                builder.setPositiveButton("Ok",null);
                 AlertDialog alert = builder.create();
                 alert.show();
             }

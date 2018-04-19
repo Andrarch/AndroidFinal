@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,7 @@ import java.util.ArrayList;
 import android.support.design.widget.Snackbar;
 
 
-public class AndrewTranspo extends Activity {
+public class AndrewTranspo extends AppCompatActivity {
     ListView javaListView;
     Button javaInfoButton;
     ArrayList<String> javaMessages = new ArrayList<String>();
@@ -39,6 +41,8 @@ public class AndrewTranspo extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_andrew_transpo);
         databaseHelp = new SearchDatabaseHelper(this);
         database = databaseHelp.getWritableDatabase();
         cursor = database.rawQuery("SELECT " + SearchDatabaseHelper.KEY_SEARCH + " FROM " + SearchDatabaseHelper.getTableName(), new String[]{});
@@ -51,9 +55,17 @@ public class AndrewTranspo extends Activity {
         }
 
         Log.i("Andrew_OCTranspo", "Cursor’s  column count =" + cursor.getColumnCount());
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.AndrewHelpMain);
+        fab.setOnClickListener((t)-> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(fab.getContext());
+                builder.setMessage("By: Andrew Archibald \n\nActivity version 0.8 \n\nPress image arrow on the left for detailed  stop information \n\nPress X image on right to delete the stop\n\nUse the input box to enter a stop number\n\nUse get info button to search information input into text box");
+                builder.setPositiveButton("Ok",null);
+                AlertDialog alert = builder.create();
+                alert.show();
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_andrew_transpo);
+        });
+
+
         javaListView = (ListView) findViewById(R.id.listViewOCPrevSearch);
         javaInfoButton = (Button) findViewById(R.id.buttonOCStopSearch);
         transpoAdapter = new SearchAdapter(this);
@@ -140,17 +152,7 @@ public class AndrewTranspo extends Activity {
         database.delete(SearchDatabaseHelper.getTableName(), SearchDatabaseHelper.KEY_SEARCH+"=?", new String[] {delete} );
         javaMessages.remove(delete);
         transpoAdapter.notifyDataSetChanged();
-        /*javaMessages=new ArrayList<String>();
 
-        cursor=database.rawQuery("SELECT "+ChatDatabaseHelper.KEY_MESSAGE+", "+ChatDatabaseHelper.KEY_ID+ " FROM "+ChatDatabaseHelper.getTableName(),new String[]{});
-        cursor.moveToFirst();
-        int column=cursor.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE);
-        while(!cursor.isAfterLast() ){
-            Log.i("ChatWindow", "SQL Message:" + cursor.getString( cursor.getColumnIndex( ChatDatabaseHelper.KEY_MESSAGE) ) );
-            javaMessages.add(cursor.getString(column));
-            cursor.moveToNext();
-        }
-        messageAdapter.notifyDataSetChanged();*/
     }
 
 }
