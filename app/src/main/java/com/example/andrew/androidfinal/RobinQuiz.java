@@ -41,9 +41,9 @@ public class RobinQuiz extends AppCompatActivity {
         numeric = findViewById(R.id.sendButton);
         // TextView message = (TextView) result.findViewById(R.id.textView);
 
-        Snackbar snackbar = Snackbar.make(findViewById(R.id.textView), "Quiz data", Snackbar.LENGTH_LONG);
+        //Snackbar snackbar = Snackbar.make(findViewById(R.id.textView), "Quiz data", Snackbar.LENGTH_LONG);
 
-        snackbar.show();
+        //snackbar.show();
 //        snackbar.setAction(R.string.AndrewStopSearchSnackGo, (t) -> {
 //            Intent intent = new Intent(RobinQuiz.this, RobinQuiz.class);
 //            intent.putExtra("StopNumber", message.getText());
