@@ -46,7 +46,7 @@ public class RobinQuiz extends Activity {
 
     SearchDatabaseHelper searchDatabase;
     EditText javaEditText;
-    Button multiple, trueFalse, numeric, infoButton;
+    Button multipleR, trueFalseR, numericR, infoButtonR;
     SQLiteDatabase databaseDb;
     Cursor cursor;
 
@@ -56,10 +56,20 @@ public class RobinQuiz extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_robin_quiz);
-        infoButton = findViewById(R.id.backR);
-        multiple = findViewById(R.id.multipleR);
-        trueFalse = findViewById(R.id.trueFalseR);
-        numeric = findViewById(R.id.numericR);
+        infoButtonR = findViewById(R.id.backR);
+        multipleR = findViewById(R.id.multipleR);
+        trueFalseR = findViewById(R.id.trueFalseR);
+        numericR = findViewById(R.id.numericR);
+        multipleR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar snackbar = Snackbar.make(multipleR, "Poshel v jopu", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
+
+        //ctx = this;
+
         // TextView message = (TextView) result.findViewById(R.id.textView);
 
 //        Snackbar snackbar = Snackbar.make(findViewById(R.id.textView), "Quiz data", Snackbar.LENGTH_LONG);

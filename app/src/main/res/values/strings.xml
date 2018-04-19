@@ -15,4 +15,6 @@
     <string name="MainRobinButton">Robin\'s Quiz</string>
     <string name="MainShadiButton">Shadi\'s Movies</string>
     <string name="MainBilalButton">Bilal\'s Clinic</string>
+    <string name="TextViewMultipleR"> Multiple Text View </string>
+    <string name="submitMultipleR"> Submit Choice </string>
 </resources>

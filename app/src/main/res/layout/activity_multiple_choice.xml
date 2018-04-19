@@ -4,48 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.andrew.androidfinal.RobinQuiz">
+    tools:context=".MultipleChoice">
 
+    <TextView
+        android:id="@+id/textViewMultiple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/TextViewMultipleR" />
 
-    <ListView
-        android:id="@+id/listView"
+    <RadioGroup
+        android:id="@+id/multipleAnswersRobin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/sendButton"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="53dp" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/sendButton"
-        android:layout_alignBottom="@+id/sendButton"
-        android:layout_marginEnd="18dp"
-        android:layout_toStartOf="@+id/sendButton"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="197dp" />
 
     <Button
-        android:id="@+id/sendButton"
+        android:id="@+id/submitMultipleR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="29dp"
-        android:layout_marginEnd="14dp"
-        android:text="Send Button" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/listView"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="13dp" />
-
-
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="17dp"
+        android:layout_marginStart="22dp"
+        android:text="@string/submitMultipleR" />
 
 </RelativeLayout>
