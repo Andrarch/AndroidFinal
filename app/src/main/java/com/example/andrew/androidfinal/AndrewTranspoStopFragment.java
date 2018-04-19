@@ -48,10 +48,11 @@ public class AndrewTranspoStopFragment extends Fragment {
         Bundle getStuff=getArguments();
         if(getStuff!=null){
             stopNumber=getStuff.getString("StopNumber");
+            StopInfoQuery stopquery=new StopInfoQuery();
+            stopquery.execute();
         }
 
-        StopInfoQuery stopquery=new StopInfoQuery();
-        stopquery.execute();
+
     }
 
     @Override
@@ -126,7 +127,7 @@ public class AndrewTranspoStopFragment extends Fragment {
             Log.i("Execute Start","Execute start");
             HttpURLConnection conn;
             try {
-                String urlString="https://api.octranspo1.com/v1.2/GetRouteSummaryForStop?appID=223eb5c3&&apiKey=ab27db5b435b8c8819ffb8095328e775&stopNo="+stopNumber;
+                String urlString="https://api.octranspo1.com/v1.2/GetRouteSummaryForStop?appID=819a393b&&apiKey=a93a58aa1d62b564034eb4d10638f06c&stopNo="+stopNumber;
                 Log.i("URL",urlString);
                 URL url = new URL(urlString);
                 conn = (HttpsURLConnection) url.openConnection();

@@ -1,8 +1,11 @@
 package com.example.andrew.androidfinal;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.util.Xml;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 
@@ -31,8 +35,13 @@ public class AndrewTranspoStop extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(fab.getContext());
+                builder.setMessage("By: Andrew Archibald \nActivity version 0.8 \nPress image > on the left for detailed information");
+
+
+
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
         FragmentManager fragmentManager = getFragmentManager();

@@ -5,7 +5,8 @@
     android:id="@+id/OCRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.andrew.androidfinal.AndrewTranspo">
+    tools:context="com.example.andrew.androidfinal.AndrewTranspo"
+    android:background="@android:color/holo_blue_bright">
 
     <TextView
         android:id="@+id/textOCTitle"
@@ -44,8 +45,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textOCTitle"
-
-        android:layout_marginBottom="51dp"
+        android:layout_above="@id/editTextOCStopSearch"
 
         />
 

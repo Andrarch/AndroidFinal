@@ -38,9 +38,10 @@ public class AndrewTranspoDetail extends Activity {
         if (extras != null) {
             StopNumber = extras.getString("StopNumber");
             BusNumber=extras.getString("BusNumber");
+            StopInfoQuery stopInfoQuery=new StopInfoQuery();
+            stopInfoQuery.execute();
         }
-        StopInfoQuery stopInfoQuery=new StopInfoQuery();
-        stopInfoQuery.execute();
+
     }
 
 public class DetailAdapter extends ArrayAdapter<DetailData> {
@@ -105,7 +106,7 @@ public class StopInfoQuery extends AsyncTask<String, Integer, String> {
         Log.i("Execute Start","Execute start");
         HttpURLConnection conn;
         try {
-            String urlString="https://api.octranspo1.com/v1.2/GetNextTripsForStop?appID=223eb5c3&&apiKey=ab27db5b435b8c8819ffb8095328e775&stopNo=" +StopNumber+"&routeNo="+BusNumber;
+            String urlString="https://api.octranspo1.com/v1.2/GetNextTripsForStop?appID=819a393b&&apiKey=a93a58aa1d62b564034eb4d10638f06c&stopNo=" +StopNumber+"&routeNo="+BusNumber;
             Log.i("URL",urlString);
             URL url = new URL(urlString);
             conn = (HttpsURLConnection) url.openConnection();

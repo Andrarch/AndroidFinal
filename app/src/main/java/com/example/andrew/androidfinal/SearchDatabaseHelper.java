@@ -15,7 +15,7 @@ public class SearchDatabaseHelper extends SQLiteOpenHelper {
     static String KEY_SEARCH="Search";
     static String KEY_ID="id";
     static private String TABLE_NAME="PrevSearch";
-    String ACTIVITY_NAME="ChatWindow";
+
     private static final String DATABASE_CREATE = "create table "
             + TABLE_NAME + "( " + KEY_ID
             + " integer primary key autoincrement, " + KEY_SEARCH
