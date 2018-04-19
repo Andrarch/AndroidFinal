@@ -60,11 +60,35 @@ public class RobinQuiz extends Activity {
         multipleR = findViewById(R.id.multipleR);
         trueFalseR = findViewById(R.id.trueFalseR);
         numericR = findViewById(R.id.numericR);
+        infoButtonR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar snackbar = Snackbar.make(multipleR, "google v zebra", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
         multipleR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar snackbar = Snackbar.make(multipleR, "Poshel v jopu", Snackbar.LENGTH_LONG);
-                snackbar.show();
+                final Intent intent = new Intent(RobinQuiz.this, MultipleChoice.class);
+                startActivity(intent);
+                
+            }
+        });
+        numericR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent intent = new Intent(RobinQuiz.this, RobinNumeric.class);
+                startActivity(intent);
+                // startActivityForResult(intent,50);
+            }
+        });
+        trueFalseR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent intent = new Intent(RobinQuiz.this, trueFalseRobin.class);
+                startActivity(intent);
+                // startActivityForResult(intent,50);
             }
         });
 

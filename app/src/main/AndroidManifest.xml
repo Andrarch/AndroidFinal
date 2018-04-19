@@ -22,7 +22,8 @@
         <activity android:name=".ShadiMovies" />
         <activity android:name=".MultipleChoice" />
         <activity android:name=".RobinListView" />
-        <activity android:name=".trueFalseRobin"></activity>
+        <activity android:name=".trueFalseRobin" />
+        <activity android:name=".RobinNumeric"></activity>
     </application>
 
 </manifest>
