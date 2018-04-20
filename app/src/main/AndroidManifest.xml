@@ -35,14 +35,12 @@
             android:name=".AndrewTranspoStop"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name=".MultipleChoice"></activity>
-
         <activity android:name=".MovieFragment"></activity>
         <activity android:name=".RobinMultipleChoice" />
         <activity android:name=".RobinListView" />
         <activity android:name=".trueFalseRobin" />
         <activity android:name=".RobinNumeric" />
-        <activity android:name=".RobinQuizFragment"></activity>
+       <!-- <activity android:name=".RobinQuizFragment"></activity> -->
     </application>
 
 </manifest>

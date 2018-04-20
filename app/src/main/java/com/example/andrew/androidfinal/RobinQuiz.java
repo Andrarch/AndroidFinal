@@ -108,8 +108,8 @@ public class RobinQuiz extends Activity {
         showList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog dialog = new Dialog(ctx);
-                dialog.setContentView(R.layout.activity_robin_list_view);
+               // final Dialog dialog = new Dialog(ctx);
+              //  dialog.setContentView(R.layout.activity_robin_list_view);
 
                 final Intent intent = new Intent(RobinQuiz.this, RobinListView.class);
                 startActivity(intent);
