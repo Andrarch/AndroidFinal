@@ -12,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
 
-
+/**
+ * This class contains a fragment, which displays the stop data
+ */
 public class AndrewTranspoStop extends AppCompatActivity {
 
     @Override
@@ -20,6 +22,7 @@ public class AndrewTranspoStop extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_andrew_transpo_stop);
+        //connects to a floating action button CST2335 – Toolbars & Dialogs Lab 8
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.AndrewHelp);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +35,9 @@ public class AndrewTranspoStop extends AppCompatActivity {
                 alert.show();
             }
         });
+        //inserts the fragment into the gramgent containder based on CST2335 – Graphical Interface Programming Lab 7
+
+
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new AndrewTranspoStopFragment();

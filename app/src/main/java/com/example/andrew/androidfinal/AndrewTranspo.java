@@ -150,9 +150,12 @@ public class AndrewTranspo extends AppCompatActivity {
                 Snackbar mySnackbar = Snackbar.make(findViewById(R.id.andrewStopIDTextView),
                         R.string.AndrewStopSearchSnack, Snackbar.LENGTH_LONG);
                 mySnackbar.setAction(R.string.AndrewStopSearchSnackUndelete, (a) -> {
-                    javaStop.add(stopIDText.getText().toString());
+                    String tempString=stopIDText.getText().toString();
+                    javaStop.add(tempString);
                     transpoAdapter.notifyDataSetChanged();
-
+                    ContentValues cValues = new ContentValues();
+                    cValues.put(SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO, tempString);
+                    database.insert(SearchDatabaseHelper.getTableNameOctranspo(), SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO, cValues);
                 });
                 mySnackbar.show();
             });

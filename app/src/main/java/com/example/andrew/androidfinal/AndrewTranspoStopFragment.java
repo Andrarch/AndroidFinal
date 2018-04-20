@@ -26,7 +26,9 @@ import java.util.ArrayList;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * A placeholder fragment containing a simple view.
+ * This fragment displays stop information for the TranspoStop activity
+ * Based on CST2335 – Graphical Interface Programming Lab 7
+
  */
 public class AndrewTranspoStopFragment extends Fragment {
 
@@ -39,6 +41,14 @@ public class AndrewTranspoStopFragment extends Fragment {
     static StopAdapter stopAdapter;
     static String stopNumber;
     static View fragmentView;
+
+    /**
+     * Creates an adapter and list
+     * Runs an Async to get information from OCtranspo
+     * Lab 4, Lab 6
+     * @param savedInstanceState - not used contains data from previous run
+     */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +65,14 @@ public class AndrewTranspoStopFragment extends Fragment {
 
     }
 
+    /**Links the adapter to the list so that changes to the list can be shown in the ListView object by the inflator
+     * Creates a pseudo first entry to act as the header for the list.
+     *
+     * @param inflater - inflator for the activity
+     * @param container - viewgroup the fragment is jammed into
+     * @param savedInstanceState - previous state information
+     * @return - returns the inflated view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,6 +88,11 @@ public class AndrewTranspoStopFragment extends Fragment {
         return result;
     }
 
+    /**
+     * Stop adapter generates views when the arraylist it is attached to changes, and it is notified.
+     * It generates the view objects for the give arraylist's data
+     * Based on Lab 4
+     */
     public class StopAdapter extends ArrayAdapter<StopData> {
         public StopAdapter(Context ctx) {
             super(ctx, 0);
@@ -84,27 +107,35 @@ public class AndrewTranspoStopFragment extends Fragment {
             return (javaStopInfo.get(position));
         }
 
+        /**
+         * This is the method that spits out the individual views
+         * Based on Lab 4
+         * @param position - integer showing the item number
+         * @param convertView - no idea
+         * @param parent - the parent view object
+         * @return - returns the view object
+         */
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
             View result;
 
             result = inflater.inflate(R.layout.octranspo_stopinfo,parent,false );
-
+            // Links the view objects to java data
             TextView direction = (TextView) result.findViewById(R.id.textOCDirection);
             TextView heading = (TextView) result.findViewById(R.id.textOCHeading);
             TextView route = (TextView) result.findViewById(R.id.textOCRoute);
             ImageView go=result.findViewById(R.id.imageOCGo);
             StopData temp=javaStopInfo.get(position);
-
+            //puts the loaded data into the visual objects
             direction.setText(temp.getRouteDirection());
             heading.setText(temp.getRouteHeading());
             route.setText(temp.getRouteNumber());
 
-            if(!temp.isButton()){
+            if(!temp.isButton()){ //Hides the button on the first entry (which is the header)
                 go.setVisibility(View.INVISIBLE);
             }
 
-            go.setOnClickListener((t)->{
+            go.setOnClickListener((t)->{ //When you click the button it passes data and moves to the detail activity to show specific bus info
                 Intent intent = new Intent( getActivity(), AndrewTranspoDetail.class);
                 intent.putExtra("StopNumber", stopNumber);
                 intent.putExtra("BusNumber", temp.getRouteNumber());
@@ -118,9 +149,18 @@ public class AndrewTranspoStopFragment extends Fragment {
 
     }
 
+    /**
+     * Based on Lab 6 Loads data for bus stop using async task
+     */
     public class StopInfoQuery extends AsyncTask<String, Integer, String> {
         ArrayList<StopData> result=new ArrayList<>();
 
+        /**
+         * connects to octranspo to get xml data for a bus stop
+         * based on Lab 6
+         * @param strings
+         * @return
+         */
         @Override
         protected String doInBackground(String... strings) {
 
@@ -142,6 +182,8 @@ public class AndrewTranspoStopFragment extends Fragment {
                 return null;
             }
             try {
+                //Parses the XML from OCTranspo
+                //https://developer.android.com/reference/org/xmlpull/v1/XmlPullParser.html
                 XmlPullParser parser = Xml.newPullParser();
                 parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
                 parser.setInput(conn.getInputStream(), null);
@@ -196,13 +238,20 @@ public class AndrewTranspoStopFragment extends Fragment {
             return null;
         }
 
+        /**
+         * Not used
+         * @param values
+         */
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            //weatherProgress.setVisibility(View.VISIBLE);
-            //weatherProgress.setProgress(values[0]);
+
         }
 
+        /**
+         * After the async task is done, the information it has loaded from OCTranspo is added to the arraylist, and the arrayadapter is notified
+         * @param s
+         */
         @Override
         protected void onPostExecute(String s) {
             Log.i("Execute Complete", "Execute complete");
@@ -214,6 +263,11 @@ public class AndrewTranspoStopFragment extends Fragment {
 
 
     }
+
+    /**
+     * THis is a data object for the data gathered from OCtranspo for the bus stop.
+     */
+
     public class StopData {
         String routeNumber, routeDirection, routeHeading;
         boolean button=true;
