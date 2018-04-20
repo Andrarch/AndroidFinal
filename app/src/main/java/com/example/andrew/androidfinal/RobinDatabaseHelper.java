@@ -26,6 +26,10 @@ public class RobinDatabaseHelper extends SQLiteOpenHelper {
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
     }
 
+    /**
+     * Database Creation
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
 

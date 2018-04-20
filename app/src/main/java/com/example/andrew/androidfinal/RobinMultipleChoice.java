@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * This class deals with putting values in Robin MultiChoiceContract class
+ */
 public class RobinMultipleChoice extends AppCompatActivity {
 
     Button add;
@@ -23,6 +26,11 @@ public class RobinMultipleChoice extends AppCompatActivity {
     EditText correctAnswer;
     RobinMultiChoiceDBHelper dbHelper;
     SQLiteDatabase db;
+
+    /**
+     * Object values are assigned from layout
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +44,9 @@ public class RobinMultipleChoice extends AppCompatActivity {
         correctAnswer = findViewById(R.id.answerCaptionR);
         dbHelper = new RobinMultiChoiceDBHelper(this);
         db = dbHelper.getWritableDatabase();
+        /**
+         * String value assigned in RobinMultiChoiceContract class
+         */
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

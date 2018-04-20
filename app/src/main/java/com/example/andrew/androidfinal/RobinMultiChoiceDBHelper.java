@@ -30,8 +30,7 @@ public class RobinMultiChoiceDBHelper extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 4;
     private String urlString;
    SQLiteDatabase db;
-//    SQLiteOpenHelper database = new Database_class(this);
-//    SQLiteDatabase db = database.getReadableDatabase();
+
 
     private int questType;
     private String question;

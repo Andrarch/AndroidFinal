@@ -2,6 +2,9 @@ package com.example.andrew.androidfinal;
 
 import android.provider.BaseColumns;
 
+/**
+ * This class assigns columns
+ */
 public class RobinMultiChoiceContract {
     private RobinMultiChoiceContract(){}
 

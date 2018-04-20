@@ -1,5 +1,8 @@
 package com.example.andrew.androidfinal;
 
+/**
+ * This class deals with the multiple choice variable
+ */
 public class RobinMultipleChoiceQuestion {
     private int questType;
     private String question;
