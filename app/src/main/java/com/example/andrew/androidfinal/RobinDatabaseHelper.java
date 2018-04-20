@@ -10,15 +10,7 @@ import android.util.Log;
  */
 
 public class RobinDatabaseHelper extends SQLiteOpenHelper {
-//    public static final String DATABASE_NAME = "Messages.db";
-//
-//    public static final int VERSION_NUM = 4;
-//
-//    public static final String TABLE_NAME = "myTable";
-//
-//    public static final String KEY_ID = "id";
-//
-//    public static final String KEY_QUIZ = "quiz";
+
 
 
     static final String DATABASE_NAME = "QUIZ_DATA";

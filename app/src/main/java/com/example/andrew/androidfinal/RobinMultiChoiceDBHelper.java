@@ -40,7 +40,7 @@ public class RobinMultiChoiceDBHelper extends SQLiteOpenHelper{
 
     public RobinMultiChoiceDBHelper(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
-       // super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 
 
@@ -124,8 +124,7 @@ public class RobinMultiChoiceDBHelper extends SQLiteOpenHelper{
 
 
     public class QuestionFromXML extends AsyncTask<String, Integer, String> {
-//        The class should have 4 string variables for the wind speed, min, max, and current temperature.
-//        There should also be a Bitmap variable to store the picture for the current weather.
+
 
 
         String result = "None";
@@ -244,7 +243,7 @@ public class RobinMultiChoiceDBHelper extends SQLiteOpenHelper{
             } catch (IOException e) {
             }
 
-            //temporary return
+
             return result;
 
         }

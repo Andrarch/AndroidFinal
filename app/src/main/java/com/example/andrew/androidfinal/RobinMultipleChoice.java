@@ -1,5 +1,6 @@
 package com.example.andrew.androidfinal;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.ContentValues;
@@ -46,6 +47,9 @@ public class RobinMultipleChoice extends AppCompatActivity {
                 cv.put(RobinMultiChoiceContract.QuestionTable.COLUMN_OPTION3, String.valueOf(answer3.getText()));
                 cv.put(RobinMultiChoiceContract.QuestionTable.COLUMN_OPTION4, String.valueOf(answer4.getText()));
                 db.insert(RobinMultiChoiceContract.QuestionTable.TABLE_NAME, "nullColumnName", cv);
+
+                Snackbar snackbar = Snackbar.make(add, "Your New Question Added", Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         });
     }
