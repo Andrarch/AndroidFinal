@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class ShadiMovies extends Activity {
+public class MainCoverMovieActivity extends Activity {
     LinearLayout linearlayout;
     Button btn_movie1;
     Button btn_button_website;
@@ -41,7 +41,7 @@ public class ShadiMovies extends Activity {
                 snackbar.show();
 
                 //Jump to movie1
-                Intent intent = new Intent(ShadiMovies.this, AddMovieActivity.class);
+                Intent intent = new Intent(MainCoverMovieActivity.this, AddMovieActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +52,7 @@ public class ShadiMovies extends Activity {
                         .make(linearlayout, "Loading movies from XML", Snackbar.LENGTH_LONG);
 
                 snackbar.show();
-                Intent intent = new Intent(ShadiMovies.this, MovieFromWebActivity.class);
+                Intent intent = new Intent(MainCoverMovieActivity.this, MovieFromWebActivity.class);
                 startActivity(intent);
             }
         });
@@ -67,10 +67,10 @@ public class ShadiMovies extends Activity {
         btn_button_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater = ShadiMovies.this.getLayoutInflater();
+                LayoutInflater inflater = MainCoverMovieActivity.this.getLayoutInflater();
 
                 //Pop up a dialogue box.
-                AlertDialog.Builder builder = new AlertDialog.Builder(ShadiMovies.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainCoverMovieActivity.this);
                 builder.setView(inflater.inflate(R.layout.help_layout, null));
                 // 2. Chain together various setter methods to set the dialog characteristics
                 builder.setTitle(R.string.help)
