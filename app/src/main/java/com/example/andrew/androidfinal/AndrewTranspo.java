@@ -1,16 +1,15 @@
 package com.example.andrew.androidfinal;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,58 +17,70 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import android.support.design.widget.Snackbar;
 
 
-
-public class AndrewTranspo extends Activity {
+public class AndrewTranspo extends AppCompatActivity {
     ListView javaListView;
     Button javaInfoButton;
     ArrayList<String> javaMessages = new ArrayList<String>();
     EditText javaText;
     SearchDatabaseHelper databaseHelp;
-
+    SearchAdapter transpoAdapter;
     SQLiteDatabase database;
     Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_andrew_transpo);
         databaseHelp = new SearchDatabaseHelper(this);
         database = databaseHelp.getWritableDatabase();
-        cursor = database.rawQuery("SELECT " + SearchDatabaseHelper.KEY_SEARCH + " FROM " + SearchDatabaseHelper.getTableName(), new String[]{});
+        cursor = database.rawQuery("SELECT " + SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO + " FROM " + SearchDatabaseHelper.getTableNameOctranspo(), new String[]{});
         cursor.moveToFirst();
-        int column = cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH);
+        int column = cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO);
         while (!cursor.isAfterLast()) {
-            Log.i("Andrew_OCTranspo", "SQL Message:" + cursor.getString(cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH)));
+            Log.i("Andrew_OCTranspo", "SQL Message:" + cursor.getString(cursor.getColumnIndex(SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO)));
             javaMessages.add(cursor.getString(column));
             cursor.moveToNext();
         }
 
         Log.i("Andrew_OCTranspo", "Cursor’s  column count =" + cursor.getColumnCount());
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.AndrewHelpMain);
+        fab.setOnClickListener((t)-> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(fab.getContext());
+                builder.setMessage("By: Andrew Archibald \n\nActivity version 0.8 \n\nPress image arrow on the left for detailed  stop information \n\nPress X image on right to delete the stop\n\nUse the input box to enter a stop number\n\nUse get info button to search information input into text box");
+                builder.setPositiveButton("Ok",null);
+                AlertDialog alert = builder.create();
+                alert.show();
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_andrew_transpo);
+        });
+
+
         javaListView = (ListView) findViewById(R.id.listViewOCPrevSearch);
         javaInfoButton = (Button) findViewById(R.id.buttonOCStopSearch);
-        SearchAdapter messageAdapter = new SearchAdapter(this);
-        javaListView.setAdapter(messageAdapter);
+        transpoAdapter = new SearchAdapter(this);
+        javaListView.setAdapter(transpoAdapter);
         javaText = (EditText) findViewById(R.id.editTextOCStopSearch);
         ContentValues cValues = new ContentValues();
         javaInfoButton.setOnClickListener(temp -> {
             String tempString = javaText.getText().toString();
             javaMessages.add(tempString);
-            messageAdapter.notifyDataSetChanged();
-            javaText.setText("");
-            cValues.put(SearchDatabaseHelper.KEY_SEARCH, tempString);
-            database.insert(SearchDatabaseHelper.getTableName(), SearchDatabaseHelper.KEY_SEARCH, cValues);
-            Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoDetail.class);
+            transpoAdapter.notifyDataSetChanged();
+
+            cValues.put(SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO, tempString);
+            database.insert(SearchDatabaseHelper.getTableNameOctranspo(), SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO, cValues);
+            Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoStop.class);
             String PassString = javaText.getText().toString();
             intent.putExtra("StopNumber", PassString);
             startActivity(intent);
+            javaText.setText("");
         });
         Toast toast = Toast.makeText(this, "Andrew's OCTranspo Toast", Toast.LENGTH_LONG);
         toast.show();
@@ -102,41 +113,28 @@ public class AndrewTranspo extends Activity {
             LayoutInflater inflater = AndrewTranspo.this.getLayoutInflater();
             View result = null;
             result = inflater.inflate(R.layout.octranspo_stopid, null);
-            TextView message = (TextView) result.findViewById(R.id.textView);
-            message.setText(getItem(position)); // get the string at position
-            message.setOnClickListener(temp -> {
-                javaText.setText(message.getText());
-
-                Snackbar mySnackbar = Snackbar.make(findViewById(R.id.textView),
-                        R.string.AndrewStopSearchSnack, Snackbar.LENGTH_SHORT);
-                mySnackbar.setAction(R.string.AndrewStopSearchSnackGo, (t) -> {
-                    Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoDetail.class);
-                    intent.putExtra("StopNumber", message.getText());
-                    startActivity(intent);
+            TextView stopIDText = (TextView) result.findViewById(R.id.andrewStopIDTextView);
+            ImageView go=result.findViewById(R.id.andrewOCStopIDGoImage);
+            ImageView del=result.findViewById(R.id.andrewOCStopIDDelImage);
+            go.setVisibility(View.VISIBLE);
+            stopIDText.setText(getItem(position)); // get the string at position
+            go.setOnClickListener((t)->{
+                Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoStop.class);
+                intent.putExtra("StopNumber", stopIDText.getText());
+                startActivity(intent);
+            });
+            del.setOnClickListener((t)->{
+                deleteEntry(stopIDText.getText().toString());
+                Snackbar mySnackbar = Snackbar.make(findViewById(R.id.andrewStopIDTextView),
+                        R.string.AndrewStopSearchSnack, Snackbar.LENGTH_LONG);
+                mySnackbar.setAction(R.string.AndrewStopSearchSnackUndelete, (a) -> {
+                    javaMessages.add(stopIDText.getText().toString());
+                    transpoAdapter.notifyDataSetChanged();
 
                 });
                 mySnackbar.show();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage("Stop Number: "+message.getText())
-                        .setPositiveButton(R.string.Continue, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Intent intent = new Intent(AndrewTranspo.this, AndrewTranspoDetail.class);
-                                intent.putExtra("StopNumber", message.getText());
-                                startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton(R.string.Delete, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Toast toast = Toast.makeText(AndrewTranspo.this, "Placeholder for Delete", Toast.LENGTH_LONG);
-                                toast.show();
-                            }
-                        });
-
-
-                AlertDialog alert = builder.create();
-                alert.show();
-
             });
+
 
             return result;
 
@@ -147,4 +145,11 @@ public class AndrewTranspo extends Activity {
         }
 
     }
+    public void deleteEntry(String delete){
+        database.delete(SearchDatabaseHelper.getTableNameOctranspo(), SearchDatabaseHelper.KEY_SEARCH_OCTRANSPO +"=?", new String[] {delete} );
+        javaMessages.remove(delete);
+        transpoAdapter.notifyDataSetChanged();
+
+    }
+
 }
