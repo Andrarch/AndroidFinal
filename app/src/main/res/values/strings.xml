@@ -43,4 +43,6 @@
     <string name="title_activity_andrew_transpo_stop">AndrewTranspoStop</string>
     <string name="action_settings">Settings</string>
     <string name="AndrewStopSearchSnackUndelete">Re-Add</string>
+    <string name="TextViewMultipleR"> Multiple Text View </string>
+    <string name="submitMultipleR"> Submit Choice </string>
 </resources>

@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.andrew.androidfinal.RobinQuiz">
-
+    <Toolbar android:id="@+id/quiz_toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+    <ProgressBar
+        android:id="@+id/progressBarRobin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="207dp"
+        android:layout_height="100dp"
         android:layout_alignParentEnd="true"
-
-
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
         android:layout_marginEnd="0dp"
@@ -20,42 +32,67 @@
         android:src="@drawable/quiz_choice" />
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/multipleR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/button2"
-        android:layout_marginStart="29dp"
+        android:layout_weight="1"
+        android:layout_alignTop="@+id/trueFalseR"
+
         android:text="Multiple Choice" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/trueFalseR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="131dp"
-        android:layout_marginEnd="111dp"
+       android:layout_weight="1"
         android:text="True/False" />
-
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/numericR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/button"
-        android:layout_marginBottom="54dp"
+        android:layout_alignStart="@+id/multipleR"
+        android:layout_weight="1"
         android:text="Numeric" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/resultsR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button2"
-        android:layout_alignTop="@+id/button3"
-        android:text="Back to Main" />
+        android:layout_weight="1"
+        android:text="Results" />
+    </LinearLayout>
 
-</RelativeLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+<Button
+    android:id="@+id/questionList"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignStart="@+id/multipleR"
+    android:layout_weight="1"
+    android:text="Question List" />
+
+<Button
+    android:id="@+id/otherR"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="About " />
+</LinearLayout>
+
+</LinearLayout>
