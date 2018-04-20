@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.andrew.androidfinal">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -31,7 +32,6 @@
         <activity android:name=".ShadiMovies" />
         <activity
             android:name=".AndrewTranspoStop"
-            android:label="@string/title_activity_andrew_transpo_stop"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity android:name=".MultipleChoice"></activity>

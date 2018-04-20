@@ -88,7 +88,7 @@ public class AndrewTranspoStopFragment extends Fragment {
             LayoutInflater inflater = getLayoutInflater();
             View result;
 
-            result = inflater.inflate(R.layout.octranspo_stopinfo, null);
+            result = inflater.inflate(R.layout.octranspo_stopinfo,parent,false );
 
             TextView direction = (TextView) result.findViewById(R.id.textOCDirection);
             TextView heading = (TextView) result.findViewById(R.id.textOCHeading);
