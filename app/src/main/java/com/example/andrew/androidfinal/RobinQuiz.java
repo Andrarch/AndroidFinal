@@ -3,7 +3,7 @@ package com.example.andrew.androidfinal;
 /**
  * This class is responsible for first load of quiz layout
  * Written by Robin Shrestha
- *
+ * Algonquin college, Student Number: 040880427
  */
 
 import android.app.Activity;
@@ -29,6 +29,9 @@ import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
+/**
+ * This class deals with the actions of the first quiz layout
+ */
 
 
 public class RobinQuiz extends Activity {
@@ -37,6 +40,7 @@ public class RobinQuiz extends Activity {
     ArrayList<String> quizLines = new ArrayList<String>();
 
     SearchDatabaseHelper searchDatabase;
+
     EditText javaEditText;
     Button multipleR, trueFalseR, numericR, infoButtonR, showList;
     SQLiteDatabase databaseDb;
@@ -51,6 +55,10 @@ public class RobinQuiz extends Activity {
     TextView questList;
     Context ctx;
 
+    /**
+     * Defining layout by various java objects
+     * @param savedInstanceState
+     */
 
 
     @Override
@@ -65,11 +73,14 @@ public class RobinQuiz extends Activity {
         showList = findViewById(R.id.questionList);
         setActionBar(tbar);
 
+
         result = findViewById(R.id.resultsR);
         questList = findViewById(R.id.questionList);
 
         ctx = this;
-
+/**
+ * About Button action
+ */
         infoButtonR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +88,10 @@ public class RobinQuiz extends Activity {
                 snackbar.show();
             }
         });
+
+        /**
+         *Action for Multiple question input
+         */
         multipleR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +102,9 @@ public class RobinQuiz extends Activity {
 
             }
         });
+        /**
+         * Action for going to Numberic Page
+         */
         numericR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +114,9 @@ public class RobinQuiz extends Activity {
                 toast.show();
             }
         });
+        /**
+         * Action for going to True/False Page
+         */
         trueFalseR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,11 +126,14 @@ public class RobinQuiz extends Activity {
                 toast.show();
             }
         });
+        /**
+         * Action for going to List Vie Page
+         */
         showList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // final Dialog dialog = new Dialog(ctx);
-              //  dialog.setContentView(R.layout.activity_robin_list_view);
+                final Dialog dialog = new Dialog(ctx);
+                dialog.setContentView(R.layout.activity_robin_list_view);
 
                 final Intent intent = new Intent(RobinQuiz.this, RobinListView.class);
                 startActivity(intent);
