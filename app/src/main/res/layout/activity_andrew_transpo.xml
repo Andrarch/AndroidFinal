@@ -8,6 +8,12 @@
     tools:context="com.example.andrew.androidfinal.AndrewTranspo"
     android:background="@android:color/holo_blue_bright">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarOCtranspo"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        app:popupTheme="@style/Theme.AppCompat.DayNight" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/AndrewHelpMain"
         android:layout_width="wrap_content"
@@ -21,7 +27,7 @@
         android:id="@+id/textOCTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbarOCtranspo"
         android:layout_alignParentStart="true"
         android:text="@string/AndrewTitleText" />
     <Button

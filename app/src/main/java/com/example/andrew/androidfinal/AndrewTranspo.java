@@ -10,8 +10,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -42,6 +45,9 @@ public class AndrewTranspo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_andrew_transpo);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOCtranspo);
+        setSupportActionBar(toolbar);
+
         // This section connects to the database and loads a query into the cursor
         databaseHelp = new SearchDatabaseHelper(this);
         database = databaseHelp.getWritableDatabase();
@@ -181,5 +187,47 @@ public class AndrewTranspo extends AppCompatActivity {
         transpoAdapter.notifyDataSetChanged();
 
     }
+    @Override
+    public boolean onCreateOptionsMenu (Menu m){
+        getMenuInflater().inflate(R.menu.maintoolbar, m );
+        return true;
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem mi){
+        int id=mi.getItemId();
+        Intent intent;
+        switch (id){
+            case R.id.action_andrew:
+                Log.d("ToolBar", "option 1");
+                intent= new Intent(AndrewTranspo.this, AndrewTranspo.class);
+
+                startActivity(intent);
+                break;
+
+
+            case R.id.action_shadi:
+                Log.d("ToolBar", "option 2");
+                intent = new Intent(AndrewTranspo.this, ShadiMovies.class);
+
+                startActivity(intent);
+
+                break;
+            case R.id.action_bilal:
+                Log.d("ToolBar", "option 3");
+                intent = new Intent(AndrewTranspo.this, BilalClinic.class);
+
+                startActivity(intent);
+
+                break;
+            case R.id.action_robin:
+                Log.d("ToolBar", "option 4");
+                intent = new Intent(AndrewTranspo.this, RobinQuiz.class);
+
+                startActivity(intent);
+                break;
+        }
+
+        return true;
+    }
 }
