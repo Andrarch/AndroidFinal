@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_andrew"
+        android:icon="@drawable/bustoolbar"
+        android:orderInCategory="101"
+        android:title="OCTranspo"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_shadi"
+        android:icon="@drawable/movietoolbar"
+        android:orderInCategory="101"
+        android:title="movies"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_bilal"
+        android:icon="@drawable/clinictoolbar"
+        android:orderInCategory="101"
+        android:title="clinic"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_robin"
+        android:icon="@drawable/quizmaintoolbar"
+        android:orderInCategory="101"
+        android:title="quiz"
+        app:showAsAction="always" />
+</menu>
